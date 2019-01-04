@@ -37,6 +37,7 @@ exports.registro = function (cb, usuario, pass)
         if (filas.length > 0) 
         {
             resultado = "existe";
+            cb(error, resultado);
         }
         else 
         {
