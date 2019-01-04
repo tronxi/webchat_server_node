@@ -24,7 +24,7 @@ app.get('//login', (req, res) => {
         }
         else
         {
-            res.send("resultado");
+            res.send(JSON.stringify(resultado));
         }
     }, usuario, pass);
   })
