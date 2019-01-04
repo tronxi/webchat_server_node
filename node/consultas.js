@@ -30,6 +30,7 @@ exports.login = function(cb, usuario, pass)
 
 exports.registro = function(cb, usuario, pass)
 {
+    console.log(usuario);
     let resultado = "";
     let qr = "select nombre, contra from usuario where nombre = '" +
         usuario + "'";
@@ -42,11 +43,13 @@ exports.registro = function(cb, usuario, pass)
         }
         if(filas.length > 0)
         {
+            console.log("existe");
             resultado = "existe";
         }
     });
     if(resultado != "existe")
     {
+        console.log("intento insertar");
         qr = "insert into usuario (nombre, contra) values ('" +
         usuario + "','" + sha1(pass) + "')";
         bd.query(qr, function(error, filas)
