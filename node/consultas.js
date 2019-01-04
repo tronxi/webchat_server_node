@@ -54,7 +54,7 @@ exports.registro = function (cb, usuario, pass) {
     });
 }
 
-    exports.conversacion = function (cb, usuario) 
+    exports.conversacionUsuario = function (cb, usuario) 
     {
         let qr = "SELECT DISTINCT \
         c.nombre, c.id_conversacion, MAX(fecha) as ultimaFecha, estado \
@@ -81,7 +81,6 @@ exports.registro = function (cb, usuario, pass) {
                 console.log('error al buscar conversaciones');
                 return;
             }
-            console.log(filas[0].nombre);
             cb(error, filas);
         });
     }

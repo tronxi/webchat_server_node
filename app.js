@@ -49,7 +49,7 @@ app.post('//login', (req, res) => {
   app.post('//conversacionUsuario', (req, res) => {
     let usuario, pass;
     usuario = req.body.usuario;
-    cl.conversacion(function(error, resultado)
+    cl.conversacionUsuario(function(error, resultado)
     {
         if(error)
         {
