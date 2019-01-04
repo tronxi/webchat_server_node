@@ -55,11 +55,11 @@ exports.registro = function (cb, usuario, pass)
                     else 
                     {
                         resultado = "ok";
+                        console.log(resultado);
+                        cb(error, resultado);
                     }
                 });
             }
-            console.log(resultado);
-            cb(error, resultado);
         }
     });
 
