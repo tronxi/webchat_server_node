@@ -1,5 +1,5 @@
 var bd=require('./conexionBD');
-
+var sha1 = require('sha1');
 exports.login = function(cb, usuario, pass)
 {
     let resultado = "";
@@ -15,7 +15,7 @@ exports.login = function(cb, usuario, pass)
         {
             resultado = "noExiste";
         }
-        else if(filas[0].contra == pass)
+        else if(filas[0].contra == sha1(pass))
         {
             resultado = "ok";
         }
