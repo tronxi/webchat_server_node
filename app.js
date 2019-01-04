@@ -16,6 +16,7 @@ app.post('//login', (req, res) => {
     let usuario, pass;
     usuario = req.params.usario;
     pass = req.params.pass;
+    console.log(usuario);
     cl.login(function(error, resultado)
     {
         if(error)
