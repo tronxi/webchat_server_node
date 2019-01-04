@@ -40,7 +40,7 @@ exports.registro = function(cb, usuario, pass)
             console.log('error al comprobar si existe usuario');
             return;
         }
-        if(filas.length >= 0)
+        if(filas.length > 0)
         {
             resultado = "existe";
         }
