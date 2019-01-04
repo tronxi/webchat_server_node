@@ -29,6 +29,24 @@ app.post('//login', (req, res) => {
         }
     }, usuario, pass);
   })
+
+  app.post('//registro', (req, res) => {
+    let usuario, pass;
+    usuario = req.body.usuario;
+    pass = req.body.pass;
+    console.log(usuario);
+    cl.registro(function(error, resultado)
+    {
+        if(error)
+        {
+            throw error;
+        }
+        else
+        {
+            res.send(JSON.stringify(resultado));
+        }
+    }, usuario, pass);
+  })
         
 const server=app.listen(8889, () => {
   console.log('Servidor web iniciado');
