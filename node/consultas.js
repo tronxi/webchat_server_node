@@ -81,7 +81,7 @@ exports.registro = function (cb, usuario, pass) {
                 console.log('error al buscar conversaciones');
                 return;
             }
-
+            console.log(filas[0].nombre);
             cb(error, filas);
         });
     }
