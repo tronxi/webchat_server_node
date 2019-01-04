@@ -62,5 +62,6 @@ exports.registro = function(cb, usuario, pass)
             }
         });
     }
-    cb(error, resultado);
+    cb(resultado);
+
 }
