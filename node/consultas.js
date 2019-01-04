@@ -73,7 +73,6 @@ exports.registro = function (cb, usuario, pass) {
             c.nombre = '"+ usuario +"') \
         GROUP BY c.id_conversacion \
         ORDER BY ultimaFecha DESC; "; 
-        console.log(usuario);
         bd.query(qr, function (error, filas) 
         {
             if (error) 
