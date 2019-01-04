@@ -16,7 +16,6 @@ app.post('//login', (req, res) => {
     let usuario, pass;
     usuario = req.body.usuario;
     pass = req.body.pass;
-    console.log(usuario);
     cl.login(function(error, resultado)
     {
         if(error)
@@ -34,7 +33,6 @@ app.post('//login', (req, res) => {
     let usuario, pass;
     usuario = req.body.usuario;
     pass = req.body.pass;
-    console.log(usuario);
     cl.registro(function(error, resultado)
     {
         if(error)
