@@ -2,6 +2,7 @@ var bd=require('./conexionBD');
 
 exports.login = function(cb, usuario, pass)
 {
+    let resultado = "";
     let qr = "select nombre, contra from usuario where nombre = '" + usuario + "'";
     bd.query(qr, function(error, filas)
     {
@@ -10,8 +11,18 @@ exports.login = function(cb, usuario, pass)
             console.log('error en el login');
             return;
         }
-        console.log(filas[0].contra);
-        console.log(filas);
-        cb(error, filas);
+        if(filas.length == 0)
+        {
+            resultado = "noExiste";
+        }
+        else if(filas[0].contra == pass)
+        {
+            resultado = "ok";
+        }
+        else
+        {
+            resultado = "passIncorrecta";
+        }
+        cb(error, resultado);
     });
 }
