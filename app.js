@@ -47,9 +47,24 @@ app.post('//login', (req, res) => {
   })
 
   app.post('//conversacionUsuario', (req, res) => {
-    let usuario, pass;
+    let usuario;
     usuario = req.body.usuario;
     cl.conversacionUsuario(function(error, resultado)
+    {
+        if(error)
+        {
+            throw error;
+        }
+        else
+        {
+            res.send(JSON.stringify(resultado));
+        }
+    }, usuario);
+  })
+  app.post('//personas', (req, res) => {
+    let usuario;
+    usuario = req.body.usuario;
+    cl.personas(function(error, resultado)
     {
         if(error)
         {

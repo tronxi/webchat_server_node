@@ -83,3 +83,17 @@ exports.registro = function (cb, usuario, pass) {
             cb(error, filas);
         });
     }
+
+    exports.personas = function (cb, usuario)
+    {
+        let qr = "select nombre from usuario where nombre !='" + usuario + "'"; 
+        bd.query(qr, function (error, filas) 
+        {
+            if (error) 
+            {
+                console.log('error al buscar personas');
+                return;
+            }
+            cb(error, filas);
+        });
+    }
