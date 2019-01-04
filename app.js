@@ -12,7 +12,7 @@ var cors = require('cors')
  
 app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
     let usuario, pass;
     usuario = req.params.usario;
     pass = req.params.pass;
