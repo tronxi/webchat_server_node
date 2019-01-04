@@ -60,7 +60,7 @@ exports.registro = function (cb, usuario, pass)
                     }
                 });
             }
-            cb(resultado);
+            cb(error, resultado);
         }
     });
 
