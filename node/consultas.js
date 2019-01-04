@@ -52,6 +52,7 @@ exports.registro = function (cb, usuario, pass) {
             }
         }
     });
+}
 
     exports.conversacion = function (cb, usuario) 
     {
@@ -83,4 +84,3 @@ exports.registro = function (cb, usuario, pass) {
             cb(error, filas);
         });
     }
-}
