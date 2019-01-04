@@ -14,8 +14,8 @@ app.use(cors())
 
 app.post('//login', (req, res) => {
     let usuario, pass;
-    usuario = req.params.usario;
-    pass = req.params.pass;
+    usuario = req.body.usario;
+    pass = req.body.pass;
     console.log(usuario);
     cl.login(function(error, resultado)
     {
