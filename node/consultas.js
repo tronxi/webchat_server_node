@@ -10,6 +10,7 @@ exports.login = function(cb, usuario, pass)
             console.log('error en el login');
             return;
         }
+        console.log(filas.contra);
         console.log(filas);
         cb(error, filas);
     });
