@@ -220,5 +220,5 @@ exports.registro = function (cb, usuario, pass) {
 
         const decipher = crypto.createDecipher(algorithm, key);
         var decrypted = decipher.update(data,'base64', 'utf-8');
-        return decrypted;
+        return decrypted.toString();
       }
