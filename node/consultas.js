@@ -97,3 +97,72 @@ exports.registro = function (cb, usuario, pass) {
             cb(error, filas);
         });
     }
+
+    exports.crearConversacion = function (cb, usuario, persona)
+    {
+        let qr = "SELECT DISTINCT \
+        c.nombre, c.id_conversacion as id \
+    FROM \
+        conversacion c \
+    WHERE \
+        c.id_conversacion != 0 \
+            AND c.nombre != '" + usuario + "' \
+            AND c.id_conversacion IN (SELECT \
+                c.id_conversacion \
+            FROM \
+                conversacion c \
+            WHERE \
+                c.nombre = '" + usuario + "');";
+        bd.query(qr, function(error, filas)
+        {
+            if(error)
+            {
+                console.log('error al buscar conversaciones');
+                return;
+            }
+            let existe = false;
+            for(let i = 0; i < filas.length; i++)
+            {
+                if(filas[0].nombre == persona)
+                {
+                    existe = true;
+                }
+            }
+            cb(error, existe);
+            if(!existe)
+            {
+                let qr2 = "SELECT MAX(id_conversacion) as id FROM conversacion;";
+
+                bd.query(qr2, function(error, filas)
+                {
+                    if(error)
+                    {
+                        console.log('error al buscar maximo id')
+                        return;
+                    }
+                    let id = parseInt(filas[0].id) + 1;
+
+                    let qr3 = "insert into conversacion values('" + usuario + "', " + id + ", 0);";
+                    bd.query(qr3, function(error, filas)
+                    {
+                        if(error)
+                        {
+                            console.log('error al insertar usuario');
+                            return;
+                        }
+                        let qr4 = "insert into conversacion values('" + persona + "', " + id + ", 0);";
+                        bd.query(qr4, function(error, filas)
+                        {
+                            if(error)
+                            {
+                                console.log('error al insertar persona');
+                                return;
+                            }
+                            cb(error, id);
+                        });
+                    });
+                });
+            }
+
+        });
+    }

@@ -76,6 +76,25 @@ app.post('//login', (req, res) => {
         }
     }, usuario);
   })
+
+  app.post('//crearConversacion', (req, res) => {
+    let usuario, persona;
+    usuario = req.body.usuario;
+    persona = req.body.persona;
+    cl.crearConversacion(function(error, resultado)
+    {
+        if(error)
+        {
+            throw error;
+        }
+        else
+        {
+            res.send(JSON.stringify(resultado));
+        }
+    }, usuario, persona);
+  })
+
+
         
 const server=app.listen(8889, () => {
   console.log('Servidor web iniciado');
