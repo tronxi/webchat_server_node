@@ -216,17 +216,17 @@ exports.registro = function (cb, usuario, pass) {
     {
         let sk = "53c42b89fa7bb4d07fd7a4002bcc678e2de3250";
         let siv = "3c8a841bf4d489c79b67f13876145077951bbdea";
-        let key = crypto.createHmac('sha256', sk);
-        let niv = crypto.createHmac('sha256', siv);
+        let key = crypto.createHmac('sha256', sk).digest('hex');
+        let niv = crypto.createHmac('sha256', siv).digest('hex');
        
-        key = CryptoJS.enc.Base64.parse(key);
+        key = CryptoJS.enc.Hex.parse(key);
         //key is now e8b7b40e031300000000da247441226a, length=32
-        iv = CryptoJS.enc.Base64.parse(niv);
+        iv = CryptoJS.enc.Hex.parse(niv);
         //iv is now 987185c4436764b6e27a72f2fffffffd, length=32*/
 
        // var cipherData = CryptoJS.AES.encrypt(message, key, { niv: niv });
 
-        var data = CryptoJS.AES.decrypt(text, key, { niv: niv });
+        var data = CryptoJS.AES.decrypt(text, key, { iv: iv });
       
         return data;
     }
