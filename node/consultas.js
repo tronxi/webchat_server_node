@@ -214,7 +214,7 @@ exports.registro = function (cb, usuario, pass) {
     function decrypt_token(data) 
     {
         console.log(data);
-        key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+        key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         iv = 'AAAAAAAAAAAAAAAA';
         const algorithm = 'aes-192-cbc';
 
