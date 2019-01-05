@@ -219,9 +219,9 @@ exports.registro = function (cb, usuario, pass) {
         const algorithm = 'aes-192-cbc';
 
         const decipher = crypto.createDecipheriv(algorithm, key, iv);
-
+        decipher.setEncoding('base64');
         let decrypted = decipher.update(data, 'base64', 'utf8');
-        decrypted += decipher.final('utf8');
-        return decrypted;
+        decrypted = Buffer.concat([decrypted, decipher.final()]);
+        return decrypted.toString();
         //return "hola";
       }
