@@ -169,3 +169,39 @@ exports.registro = function (cb, usuario, pass) {
 
         });
     }
+
+    exports.mostrarMensaje = function(cb, id, usuario)
+    {
+        let qr = "select nombre, texto, fecha from mensaje where id_conversacion = " +  id + "";
+        let mensajes;
+        bd.query(qr, function(error, filas)
+        {
+            if(error)
+            {
+                console.log('error al seleccionar mensajes');
+                return;
+            }
+            mensajes = filas;
+
+            let qr2 = "UPDATE conversacion \
+			SET \
+				estado = 0 \
+			WHERE \
+				id_conversacion = " + id + " \
+					AND nombre = (SELECT \
+						nombre \
+					WHERE \
+						id_conversacion = " + id + " \
+                            AND nombre != '" +  usuario + "');";
+            bd.query(qr2, function(error, filas)
+            {
+                if(error)
+                {
+                    console.log('error al poner estado a 0');
+                    return;
+                }
+                cb(error, mensajes);
+            });
+
+        });
+    }

@@ -94,6 +94,23 @@ app.post('//login', (req, res) => {
     }, usuario, persona);
   })
 
+  app.post('//mostrarMensaje', (req, res) => {
+    let usuario, id;
+    usuario = req.body.id;
+    id = req.body.id;
+    cl.mostrarMensaje(function(error, resultado)
+    {
+        if(error)
+        {
+            throw error;
+        }
+        else
+        {
+            res.send(JSON.stringify(resultado));
+        }
+    }, usuario, id);
+  })
+
 
         
 const server=app.listen(8889, () => {
