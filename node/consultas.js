@@ -213,13 +213,12 @@ exports.registro = function (cb, usuario, pass) {
 
     function decrypt_token(data) 
     {
-        data = new Buffer(data, 'base64').toString();
         console.log(data);
         key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         iv = 'AAAAAAAAAAAAAAAA';
         const algorithm = 'aes-256-cbc';
 
         const decipher = crypto.createDecipher(algorithm, key);
-        var decrypted = decipher.update(data,'base64', 'utf8');
+        var decrypted = decipher.update(data,'base64', 'utf-8');
         return decrypted;
       }
