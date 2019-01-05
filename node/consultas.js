@@ -221,7 +221,7 @@ exports.registro = function (cb, usuario, pass) {
         var decode =  decipher.update(encryptdata);
         //decode += decipher.final();
         console.log(decode);
-        console.log("string " + decode.toLocaleString);
+        console.log("string " + decode.toString);
         return decode;
         //return "hola";
       }
