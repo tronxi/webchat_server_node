@@ -213,6 +213,7 @@ exports.registro = function (cb, usuario, pass) {
 
     function decrypt_token(data) 
     {
+        data = new Buffer(data, 'base64').toString();
         console.log(data);
         key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         iv = 'AAAAAAAAAAAAAAAA';
