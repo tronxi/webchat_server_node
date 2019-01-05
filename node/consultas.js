@@ -170,7 +170,7 @@ exports.registro = function (cb, usuario, pass) {
         });
     }
 
-    exports.mostrarMensaje = function(cb, id, usuario)
+    exports.mostrarMensaje = function(cb, usuario, id)
     {
         let qr = "select nombre, texto, fecha from mensaje where id_conversacion = " +  id + "";
         let mensajes;
