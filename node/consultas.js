@@ -1,7 +1,6 @@
 var bd = require('./conexionBD');
 var sha1 = require('sha1');
 const crypto = require('crypto');
-const cryptojs = require('crypto-js');
 
 exports.login = function (cb, usuario, pass) {
     let resultado = "";
