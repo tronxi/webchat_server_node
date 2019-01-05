@@ -94,7 +94,7 @@ app.post('//login', (req, res) => {
     }, usuario, persona);
   })
 
-  app.post('//mostrarMensaje', (req, res) => {
+  app.post('//mostrarMensajes', (req, res) => {
     let usuario, id;
     usuario = req.body.id;
     id = req.body.id;

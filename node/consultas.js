@@ -123,12 +123,12 @@ exports.registro = function (cb, usuario, pass) {
             let existe = false;
             for(let i = 0; i < filas.length; i++)
             {
-                if(filas[0].nombre == persona)
+                if(filas[i].nombre == persona)
                 {
-                    existe = true;
+                    existe = filas[i].id;
                 }
             }
-            if(existe)
+            if(existe != false)
             {
                 cb(error, existe);
             }
