@@ -222,6 +222,6 @@ exports.registro = function (cb, usuario, pass) {
         return Buffer.concat([
             decipher.update(data, 'base64'), // Expect `text` to be a base64 string
             decipher.final()
-          ]).toString(),
+          ]).toString();
         //return "hola";
       }
