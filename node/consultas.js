@@ -216,5 +216,5 @@ exports.registro = function (cb, usuario, pass) {
        /* var decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
         decipher.update(data, 'base64', 'binary');
         return decipher.final('binary');*/
-        retrun = "hola"
+        return "hola";
       }
