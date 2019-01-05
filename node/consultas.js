@@ -204,7 +204,8 @@ exports.registro = function (cb, usuario, pass) {
                 }
                 for(let i = 0; i < mensajes.length; i++)
                 {
-                    console.log(String.fromCharCode.apply(null, new Uint16Array(mensajes[i].texto2)));
+                    mensajes[i].texto2 =
+                    String.fromCharCode.apply(null, new Uint16Array(mensajes[i].texto2));
                 }
                 cb(error, mensajes);
             });
