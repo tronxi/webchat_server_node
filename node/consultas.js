@@ -1,7 +1,6 @@
 var bd = require('./conexionBD');
 var sha1 = require('sha1');
-const crypto = require('crypto');
-var CryptoJS = require("crypto-js");
+var crypto = require('crypto');
 
 exports.login = function (cb, usuario, pass) {
     let resultado = "";
@@ -212,9 +211,12 @@ exports.registro = function (cb, usuario, pass) {
         });
     }
 
-    function decrypt_token(data) {
-       /* var decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
+    function decrypt_token(data) 
+    {
+        key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+        iv = 'AAAAAAAAAAAAAAAA';
+        var decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
         decipher.update(data, 'base64', 'binary');
-        return decipher.final('binary');*/
-        return "hola";
+        return decipher.final('binary');
+        //return "hola";
       }
