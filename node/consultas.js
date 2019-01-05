@@ -203,8 +203,9 @@ exports.registro = function (cb, usuario, pass) {
                 }
                 for(let i = 0; i < mensajes.length; i++)
                 {
-                    mensajes[i].texto = decrypt_token(mensajes[i].texto);
+                    
                 }
+                mensajes[0].texto = decrypt_token(mensajes[0].texto);
                 cb(error, mensajes);
             });
 
@@ -220,7 +221,7 @@ exports.registro = function (cb, usuario, pass) {
 
         const decipher = crypto.createDecipheriv(algorithm, key, iv);
         return Buffer.concat([
-            decipher.update(data, 'base64'), // Expect `text` to be a base64 string
+            decipher.update(data, 'base64'),
             decipher.final()
           ]).toString();
         //return "hola";
