@@ -218,7 +218,7 @@ exports.registro = function (cb, usuario, pass) {
         iv = 'AAAAAAAAAAAAAAAA';
         const algorithm = 'aes-256-cbc';
 
-        const decipher = crypto.createDecipheriv(algorithm, key, iv);
+        const cipher = crypto.createDecipheriv(algorithm, key, iv);
         return Buffer.concat([
             cipher.update(data),
             cipher.final()
