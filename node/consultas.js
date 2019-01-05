@@ -201,24 +201,8 @@ exports.registro = function (cb, usuario, pass) {
                     console.log('error al poner estado a 0');
                     return;
                 }
-                for(let i = 0; i < mensajes.length; i++)
-                {
-                    mensajes[i].texto = decrypt_token(mensajes[i].texto);
-                }
                 cb(error, mensajes);
             });
 
         });
     }
-
-    function decrypt_token(data) 
-    {
-        console.log(data);
-        key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
-        iv = 'AAAAAAAAAAAAAAAA';
-        const algorithm = 'aes-256-cbc';
-
-        const decipher = crypto.createDecipher(algorithm, key);
-        var decrypted = decipher.update(data,'base64', 'utf-8');
-        return decrypted.toString();
-      }
