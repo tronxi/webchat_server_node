@@ -216,7 +216,7 @@ exports.registro = function (cb, usuario, pass) {
         console.log(data);
         key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         iv = 'AAAAAAAAAAAAAAAA';
-        const algorithm = 'aes-192-cbc';
+        const algorithm = 'aes-256-cbc';
 
         const decipher = crypto.createDecipheriv(algorithm, key, iv);
         decipher.setEncoding('base64');
