@@ -174,7 +174,7 @@ exports.registro = function (cb, usuario, pass) {
     exports.mostrarMensaje = function(cb, usuario, id)
     {
         let clave = "53c42b89fa7bb4d07fd7a4002bcc678e2de3250";
-        let qr = "select nombre,  AES_DECRYPT(texto, '"+ clave+ "') as texto, fecha from mensaje where id_conversacion = " +  id + "";
+        let qr = "select nombre,  AES_DECRYPT(texto, '"+ clave+ "') as texto2, fecha from mensaje where id_conversacion = " +  id + "";
         let mensajes;
         bd.query(qr, function(error, filas)
         {
@@ -204,7 +204,7 @@ exports.registro = function (cb, usuario, pass) {
                 }
                 for(let i = 0; i < mensajes.length; i++)
                 {
-                    console.log(mensajes[i].texto);
+                    console.log(mensajes[i].texto2);
                 }
                 cb(error, mensajes);
             });
