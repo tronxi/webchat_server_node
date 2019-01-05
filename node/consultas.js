@@ -219,7 +219,9 @@ exports.registro = function (cb, usuario, pass) {
         encryptdata = new Buffer(data, 'base64').toString('binary');
         var decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
         var decode =  decipher.update(encryptdata);
-        decode += decipher.final();
+        //decode += decipher.final();
+        console.log(decode);
+        console.log("string " + decode.toLocaleString);
         return decode;
         //return "hola";
       }
