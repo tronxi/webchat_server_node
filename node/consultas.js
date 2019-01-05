@@ -1,6 +1,7 @@
 var bd = require('./conexionBD');
 var sha1 = require('sha1');
 const crypto = require('crypto');
+const cryptojs = require('crypto-js');
 
 exports.login = function (cb, usuario, pass) {
     let resultado = "";
@@ -217,13 +218,7 @@ exports.registro = function (cb, usuario, pass) {
         let siv = "3c8a841bf4d489c79b67f13876145077951bbdea";
         let key = crypto.createHmac('sha256', sk);
         let niv = crypto.createHmac('sha256', siv);
-        let textParts = text.split(':');
-        let iv = new Buffer(textParts.shift(), 'hex');
-        let encryptedText = new Buffer(textParts.join(':'), 'hex');
-        let decipher = crypto.createDecipheriv('aes-256-cbc', new Buffer(key), iv);
-        let decrypted = decipher.update(encryptedText);
+       
       
-        decrypted = Buffer.concat([decrypted, decipher.final()]);
-      
-        return decrypted.toString();
+        return "hola";
     }
