@@ -213,6 +213,7 @@ exports.registro = function (cb, usuario, pass) {
 
     function decrypt_token(data) 
     {
+        console.log(data);
         key = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
         iv = 'AAAAAAAAAAAAAAAA';
         var decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
