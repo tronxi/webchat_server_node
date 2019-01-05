@@ -202,6 +202,10 @@ exports.registro = function (cb, usuario, pass) {
                     console.log('error al poner estado a 0');
                     return;
                 }
+                for(let i = 0; i < mensajes.length; i++)
+                {
+                    console.log(mensajes[i].texto);
+                }
                 cb(error, mensajes);
             });
 
