@@ -222,7 +222,7 @@ exports.registro = function (cb, usuario, pass) {
         const decipher = crypto.createDecipheriv(algorithm, key, iv);
         return Buffer.concat([
             decipher.update(data, 'base64'),
-            decipher.final()
-          ]).toString();
+            decipher.final('base64')
+          ]).toString('base64');
         //return "hola";
       }
