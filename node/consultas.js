@@ -1,5 +1,6 @@
 var bd = require('./conexionBD');
 var sha1 = require('sha1');
+const crypto = require('crypto');
 
 exports.login = function (cb, usuario, pass) {
     let resultado = "";
@@ -205,3 +206,16 @@ exports.registro = function (cb, usuario, pass) {
 
         });
     }
+
+    /*function decrypt(text) {
+        let textParts = text.split(':');
+        let iv = new Buffer(textParts.shift(), 'hex');
+        let encryptedText = new Buffer(textParts.join(':'), 'hex');
+        let decipher = crypto.createDecipheriv('aes-256-cbc', new Buffer(ENCRYPTION_KEY), iv);
+        let decrypted = decipher.update(encryptedText);
+      
+        decrypted = Buffer.concat([decrypted, decipher.final()]);
+      
+        return decrypted.toString();
+      }
+*/
