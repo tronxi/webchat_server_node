@@ -128,8 +128,11 @@ exports.registro = function (cb, usuario, pass) {
                     existe = true;
                 }
             }
-            cb(error, existe);
-            if(!existe)
+            if(existe)
+            {
+                cb(error, existe);
+            }
+            else if(!existe)
             {
                 let qr2 = "SELECT MAX(id_conversacion) as id FROM conversacion;";
 
