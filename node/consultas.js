@@ -202,16 +202,12 @@ exports.registro = function (cb, usuario, pass) {
                     console.log('error al poner estado a 0');
                     return;
                 }
-                 console.log(abs2str(mensajes[0]));
                 for(let i = 0; i < mensajes.length; i++)
                 {
-                    console.log(mensajes[i].texto2);
+                    console.log(String.fromCharCode.apply(null, new Uint16Array(mensajes[i].texto2)));
                 }
                 cb(error, mensajes);
             });
 
         });
     }
-    function ab2str(buf) {
-        return String.fromCharCode.apply(null, new Uint16Array(buf));
-      }
