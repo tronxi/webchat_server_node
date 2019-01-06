@@ -96,7 +96,7 @@ app.post('//login', (req, res) => {
 
   app.post('//mostrarMensajes', (req, res) => {
     let usuario, id;
-    usuario = req.body.id;
+    usuario = req.body.usuario;
     id = req.body.id;
     cl.mostrarMensaje(function(error, resultado)
     {
@@ -113,7 +113,7 @@ app.post('//login', (req, res) => {
 
   app.post('//enviarMensaje', (req, res) => {
     let usuario, id, mensaje;
-    usuario = req.body.id;
+    usuario = req.body.usuario;
     id = req.body.id;
     mensaje = req.body.id;
     cl.enviarMensaje(function(error, resultado)
