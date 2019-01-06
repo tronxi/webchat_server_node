@@ -1,6 +1,6 @@
 var bd = require('./conexionBD');
 var sha1 = require('sha1');
-var crypto = require('crypto');
+var FCM = require('fcm-node');
 
 exports.login = function (cb, usuario, pass) {
     let resultado = "";
@@ -253,8 +253,24 @@ exports.registro = function (cb, usuario, pass) {
                         console.log('error al buscar token');
                         return;
                     }
-                    console.log(filas[0].token);
-                    cb(error, filas);
+                    var serverKey = 'AAAA4iUUfRc:APA91bFSDG8l61UvTH3y3keSmNfTodFgaH9rNj2IE84z3Ob9YDtZqLkuGFNEv0G3kZnsj_8XYo5I0CCtQ9ZR9ZX1YIgtu01o7ePDcyU8lQuD6W6X-enuPL85zJsFnDTWXB5O61irybXO';
+                    var fcm = new FCM(serverKey);
+                    var message = { 
+                        to: filas[0].token, 
+                        
+                        notification: {
+                            title: usuario, 
+                            body: mensaje 
+                        },
+                    };
+                    fcm.send(message, function(err, response){
+                        if (err) {
+                            console.log("Something has gone wrong!");
+                        } else {
+                            console.log("Successfully sent with response: ", response);
+                            cb(error, filas);
+                        }
+                    });
                 });
                 
             });
