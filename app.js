@@ -111,6 +111,24 @@ app.post('//login', (req, res) => {
     }, usuario, id);
   })
 
+  app.post('//enviarMensaje', (req, res) => {
+    let usuario, id, mensaje;
+    usuario = req.body.id;
+    id = req.body.id;
+    mensaje = req.body.id;
+    cl.enviarMensaje(function(error, resultado)
+    {
+        if(error)
+        {
+            throw error;
+        }
+        else
+        {
+            res.send(JSON.stringify(resultado));
+        }
+    }, mensaje, usuario, id);
+  })
+
 
         
 const server=app.listen(8889, () => {

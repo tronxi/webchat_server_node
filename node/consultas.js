@@ -212,3 +212,25 @@ exports.registro = function (cb, usuario, pass) {
 
         });
     }
+
+    exports.enviarMensaje = function(cb, mensaje, usuario, id)
+    {
+        let key = "";
+        let d = new Date();
+        let fecha = "" + d.getFullYear() + "/" + d.getMonth() + 
+        "/" + d.getDate() + " " + d.getHours() + ":" +
+        d.getMinutes() + ":" + d.getSeconds();
+        let qr = "insert into mensaje (nombre, texto, fecha, id_conversacion) \
+         values ('" + usuario + "',\
+          AES_ENCRYPT('" + mensaje + "', '" +  key + "') , \
+         '" + fecha + "', " + id + ")";
+
+         bd.query(qr, function(error, filas){
+             if(error)
+             {
+                 console.log('error al enviar mensaje');
+                 return;
+             }
+             cb(error, filas);
+         });
+    }
