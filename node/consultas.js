@@ -215,6 +215,7 @@ exports.registro = function (cb, usuario, pass) {
 
     exports.enviarMensaje = function(cb, mensaje, usuario, id)
     {
+        console.log(mensaje);
         let key = "";
         let d = new Date();
         let fecha = "" + d.getFullYear() + "/" + d.getMonth() + 
