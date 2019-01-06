@@ -215,7 +215,6 @@ exports.registro = function (cb, usuario, pass) {
 
     exports.enviarMensaje = function(cb, mensaje, usuario, id)
     {
-        console.log(mensaje);
         let key = "53c42b89fa7bb4d07fd7a4002bcc678e2de3250";
         let d = new Date();
         let fecha = "" + d.getFullYear() + "/" + d.getMonth() + 
@@ -244,7 +243,20 @@ exports.registro = function (cb, usuario, pass) {
                     console.log('error al aumentar estado');
                     return;
                 }
-                cb(error, filas);
+                let qr3 = "SELECT u.nombre as nombre, \
+                u.token as token from usuario u, conversacion c \
+                where u.nombre = c.nombre and \
+                c.id_conversacion = "+  id +" and u.nombre != '"+ usuario +"';";
+                bd.query(qr3, function(error, filas){
+                    if(error)
+                    {
+                        console.log('error al buscar token');
+                        return;
+                    }
+                    console.log(filas[0].token);
+                    cb(error, filas);
+                });
+                
             });
          });
     }
