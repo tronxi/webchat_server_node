@@ -232,6 +232,19 @@ exports.registro = function (cb, usuario, pass) {
                  console.log('error al enviar mensaje');
                  return;
              }
-             cb(error, filas);
+             let qr2 = "UPDATE conversacion \
+                SET \
+                    estado = estado + 1 \
+                WHERE \
+                    id_conversacion = " +  id +" \
+                        AND nombre = '" + usuario + "'";
+            bd.query(qr2, function(error, filas){
+                if(error)
+                {
+                    console.log('error al aumentar estado');
+                    return;
+                }
+                cb(error, filas);
+            });
          });
     }
