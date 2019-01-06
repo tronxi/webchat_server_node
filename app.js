@@ -115,7 +115,7 @@ app.post('//login', (req, res) => {
     let usuario, id, mensaje;
     usuario = req.body.usuario;
     id = req.body.id;
-    mensaje = req.body.id;
+    mensaje = req.body.mensaje;
     cl.enviarMensaje(function(error, resultado)
     {
         if(error)
