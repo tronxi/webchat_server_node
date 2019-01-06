@@ -267,7 +267,6 @@ exports.registro = function (cb, usuario, pass) {
                         if (err) {
                             console.log("Something has gone wrong!");
                         } else {
-                            console.log("Successfully sent with response: ", response);
                             cb(error, filas);
                         }
                     });
