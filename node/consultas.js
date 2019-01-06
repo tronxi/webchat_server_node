@@ -1,5 +1,6 @@
 var bd = require('./conexionBD');
 var sha1 = require('sha1');
+var datos = require('./datos');
 var FCM = require('fcm-node');
 
 exports.login = function (cb, usuario, pass) {
@@ -173,7 +174,7 @@ exports.registro = function (cb, usuario, pass) {
 
     exports.mostrarMensaje = function(cb, usuario, id)
     {
-        let clave = "53c42b89fa7bb4d07fd7a4002bcc678e2de3250";
+        let clave = datos.clave;
         let qr = "select nombre,  AES_DECRYPT(texto, '"+ clave+ "') as texto2, fecha from mensaje where id_conversacion = " +  id + "";
         let mensajes;
         bd.query(qr, function(error, filas)
@@ -215,7 +216,7 @@ exports.registro = function (cb, usuario, pass) {
 
     exports.enviarMensaje = function(cb, mensaje, usuario, id)
     {
-        let key = "53c42b89fa7bb4d07fd7a4002bcc678e2de3250";
+        let key = datos.clave;
         let d = new Date();
         let fecha = "" + d.getFullYear() + "/" + d.getMonth() + 
         "/" + d.getDate() + " " + d.getHours() + ":" +
@@ -253,7 +254,7 @@ exports.registro = function (cb, usuario, pass) {
                         console.log('error al buscar token');
                         return;
                     }
-                    var serverKey = 'AAAA4iUUfRc:APA91bFSDG8l61UvTH3y3keSmNfTodFgaH9rNj2IE84z3Ob9YDtZqLkuGFNEv0G3kZnsj_8XYo5I0CCtQ9ZR9ZX1YIgtu01o7ePDcyU8lQuD6W6X-enuPL85zJsFnDTWXB5O61irybXO';
+                    var serverKey = datos.server_key;
                     var fcm = new FCM(serverKey);
                     var message = { 
                         to: filas[0].token, 

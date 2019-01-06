@@ -1,11 +1,11 @@
 var mysql=require('mysql');
-
+var datos = require('./datos');
 var conexion=mysql.createConnection({
-    host:'192.168.0.5',
-    port:'3306',
-    user:'tronxi',
-    password:'tronxi97',
-    database:'chat'
+    host: datos.host,
+    port: datos.port,
+    user: datos.user,
+    password: datos.password,
+    database: datos.database
 });
 
 conexion.connect(function (error){
