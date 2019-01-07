@@ -218,9 +218,9 @@ exports.registro = function (cb, usuario, pass) {
     {
         let key = datos.clave;
         let d = new Date();
-        let fecha = "" + d.getFullYear() + "/" + d.getMonth() + 
-        "/" + d.getDate() + " " + d.getHours() + ":" +
-        d.getMinutes() + ":" + d.getSeconds();
+        let fecha = "" + d.getFullYear() + "/" + str(d.getMonth() + 1).zfill(2) + 
+        "/" + str(d.getDate() + 1).zfill(2) + " " + str(d.getHours()).zfill(2) + ":" +
+        str(d.getMinutes()).zfill(2) + ":" + str(d.getSeconds()).zfill(2);
         let qr = "insert into mensaje (nombre, texto, fecha, id_conversacion) \
          values ('" + usuario + "',\
           AES_ENCRYPT('" + mensaje + "', '" +  key + "') , \
