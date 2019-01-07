@@ -218,9 +218,9 @@ exports.registro = function (cb, usuario, pass) {
     {
         let key = datos.clave;
         let d = new Date();
-        let fecha = "" + d.getFullYear() + "/" + str(d.getMonth() + 1).zfill(2) + 
-        "/" + str(d.getDate() + 1).zfill(2) + " " + str(d.getHours()).zfill(2) + ":" +
-        str(d.getMinutes()).zfill(2) + ":" + str(d.getSeconds()).zfill(2);
+        let fecha = "" + d.getFullYear() + "/" + pad(d.getMonth(),2,1) + 
+        "/" + pad(d.getDate(),2,1) + " " + pad(d.getHours(),2,0) + ":" +
+        pad(d.getMinutes(),2,0) + ":" + pad(d.getSeconds(),2,0);
         let qr = "insert into mensaje (nombre, texto, fecha, id_conversacion) \
          values ('" + usuario + "',\
           AES_ENCRYPT('" + mensaje + "', '" +  key + "') , \
@@ -275,4 +275,10 @@ exports.registro = function (cb, usuario, pass) {
                 
             });
          });
+         function pad(num, size, sum) {
+             num += sum;
+            var s = "000000000" + num;
+            return s.substr(s.length-size);
+        }
+        
     }
