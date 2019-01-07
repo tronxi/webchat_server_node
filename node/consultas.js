@@ -219,7 +219,7 @@ exports.registro = function (cb, usuario, pass) {
         let key = datos.clave;
         let d = new Date();
         let fecha = "" + d.getFullYear() + "/" + pad(d.getMonth(),2,1) + 
-        "/" + pad(d.getDate(),2,1) + " " + pad(d.getHours(),2,0) + ":" +
+        "/" + pad(d.getDate(),2,0) + " " + pad(d.getHours(),2,0) + ":" +
         pad(d.getMinutes(),2,0) + ":" + pad(d.getSeconds(),2,0);
         let qr = "insert into mensaje (nombre, texto, fecha, id_conversacion) \
          values ('" + usuario + "',\
