@@ -12,6 +12,11 @@ var cors = require('cors')
  
 app.use(cors())
 
+app.post('//', (req, res) => 
+{
+    res.send('Servidor webChat funcionando');
+});
+
 app.post('//login', (req, res) => {
     let usuario, pass;
     usuario = req.body.usuario;
