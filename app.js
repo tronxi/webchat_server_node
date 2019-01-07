@@ -12,7 +12,7 @@ var cors = require('cors')
  
 app.use(cors())
 
-app.post('//', (req, res) => 
+app.get('//', (req, res) => 
 {
     res.send('Servidor webChat funcionando');
 });
