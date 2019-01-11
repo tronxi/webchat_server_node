@@ -267,6 +267,7 @@ exports.registro = function (cb, usuario, pass) {
                     fcm.send(message, function(err, response){
                         if (err) {
                             console.log("Something has gone wrong!");
+                            cb(error, filas);
                         } else {
                             cb(error, filas);
                         }
