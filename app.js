@@ -1,5 +1,7 @@
 const express=require('express');
 const app=express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -15,6 +17,20 @@ app.use(cors())
 app.get('//', (req, res) => 
 {
     res.send('Servidor webChat funcionando');
+});
+
+io.on('connect', function(socket) {
+    console.log('Un cliente se ha conectado');
+    socket.on('union', function(data){
+        socket.join(data);
+        console.log('unido a sala ' + data);
+        //io.sockets.in(data).emit('message', 'socket');
+    });
+    socket.on('salir', function(data){
+        socket.leave(data);
+        console.log('salir a sala ' + data);
+        //io.sockets.in(data).emit('message', 'socket');
+    });
 });
 
 app.post('//login', (req, res) => {
@@ -129,6 +145,7 @@ app.post('//login', (req, res) => {
         }
         else
         {
+            io.sockets.in(id).emit('actualizar-mensajes', 'actualizar');
             res.send(JSON.stringify(resultado));
         }
     }, mensaje, usuario, id);
@@ -136,6 +153,6 @@ app.post('//login', (req, res) => {
 
 
         
-const server=app.listen(8889, () => {
+server.listen(8889, () => {
   console.log('Servidor web iniciado');
 });
