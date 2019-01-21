@@ -62,6 +62,7 @@ app.post('//login', (req, res) => {
         }
         else
         {
+            io.sockets.emit('nuevo-usuario', 'actualizar');
             res.send(JSON.stringify(resultado));
         }
     }, usuario, pass);
