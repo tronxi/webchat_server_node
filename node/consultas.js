@@ -254,6 +254,7 @@ exports.registro = function (cb, usuario, pass) {
                         console.log('error al buscar token');
                         return;
                     }
+                    console.log(filas[0].token);
                     var serverKey = datos.server_key;
                     var fcm = new FCM(serverKey);
                     var message = { 
