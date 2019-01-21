@@ -147,6 +147,7 @@ app.post('//login', (req, res) => {
         else
         {
             io.sockets.in(id).emit('actualizar-mensajes', 'actualizar');
+            io.sockets.emit('nuevo-mensaje', 'actualizar');
             res.send(JSON.stringify(resultado));
         }
     }, mensaje, usuario, id);
