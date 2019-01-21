@@ -255,24 +255,31 @@ exports.registro = function (cb, usuario, pass) {
                         return;
                     }
                     console.log(filas[0].token);
-                    var serverKey = datos.server_key;
-                    var fcm = new FCM(serverKey);
-                    var message = { 
-                        to: filas[0].token, 
-                        
-                        notification: {
-                            title: usuario, 
-                            body: mensaje 
-                        },
-                    };
-                    fcm.send(message, function(err, response){
-                        if (err) {
-                            console.log("Something has gone wrong!");
-                            cb(error, filas);
-                        } else {
-                            cb(error, filas);
-                        }
-                    });
+                    if(filas[0].token != null)
+                    {
+                        var serverKey = datos.server_key;
+                        var fcm = new FCM(serverKey);
+                        var message = { 
+                            to: filas[0].token, 
+                            
+                            notification: {
+                                title: usuario, 
+                                body: mensaje 
+                            },
+                        };
+                        fcm.send(message, function(err, response){
+                            if (err) {
+                                console.log("Something has gone wrong!");
+                                cb(error, filas);
+                            } else {
+                                cb(error, filas);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        cb(error, filas);
+                    }
                 });
                 
             });
