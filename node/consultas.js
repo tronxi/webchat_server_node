@@ -270,15 +270,11 @@ exports.registro = function (cb, usuario, pass) {
                             if (err) {
                                 console.log("Something has gone wrong!");
                                 cb(error, filas);
-                            } else {
-                                cb(error, filas);
                             }
                         });
                     }
-                    else
-                    {
-                        cb(error, filas);
-                    }
+                    cb(error, filas);
+                    
                 });
                 
             });
