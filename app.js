@@ -22,13 +22,13 @@ app.get('//', (req, res) =>
 io.on('connect', function(socket) {
     console.log('Un cliente se ha conectado');
     socket.on('union', function(data){
-        socket.join(data);
-        console.log('unido a sala ' + data);
+        socket.join(data.id);
+        console.log('unido a sala ' + data.id);
         //io.sockets.in(data).emit('message', 'socket');
     });
     socket.on('salir', function(data){
-        socket.leave(data);
-        console.log('salir a sala ' + data);
+        socket.leave(data.id);
+        console.log('salir a sala ' + data.id);
         //io.sockets.in(data).emit('message', 'socket');
     });
 });
