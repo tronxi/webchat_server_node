@@ -270,7 +270,7 @@ exports.registro = function (cb, usuario, pass) {
                         console.log('error al buscar token');
                         return;
                     }
-                    if(filas[0].token != null)
+                    if(filas[0].token != null && filas[0].token != 'null')
                     {
                         var serverKey = datos.server_key;
                         var fcm = new FCM(serverKey);
