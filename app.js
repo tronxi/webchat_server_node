@@ -48,7 +48,23 @@ app.post('//login', (req, res) => {
             res.send(JSON.stringify(resultado));
         }
     }, usuario, pass);
-  })
+  });
+  app.post('//token', (req, res) => {
+    let usuario, token;
+    usuario = req.body.usuario;
+    token = req.body.token;
+    cl.token(function(error, resultado)
+    {
+        if(error)
+        {
+            throw error;
+        }
+        else
+        {
+            res.send(JSON.stringify(resultado));
+        }
+    }, usuario, token);
+  });
 
   app.post('//registro', (req, res) => {
     let usuario, pass;
