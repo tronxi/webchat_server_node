@@ -88,12 +88,13 @@ exports.registro = function (cb, usuario, pass) {
 
     exports.personas = function (cb, usuario)
     {
-        let qr = "update usuario set token ='"+token+ "'where nombre ='"+usuario+"';"; 
+        let qr = "select nombre from usuario where nombre !='" + usuario + "'"; 
+
         bd.query(qr, function (error, filas) 
         {
             if (error) 
             {
-                console.log('error al actualizar token');
+                console.log('error al buscar personas');
                 return;
             }
             cb(error, filas);
@@ -102,12 +103,13 @@ exports.registro = function (cb, usuario, pass) {
 
     exports.token = function (cb, usuario, token)
     {
-        let qr = "select nombre from usuario where nombre !='" + usuario + "'"; 
+        let qr = "update usuario set token ='"+token+ "'where nombre ='"+usuario+"';"; 
+
         bd.query(qr, function (error, filas) 
         {
             if (error) 
             {
-                console.log('error al buscar personas');
+                console.log('error al actualizar token');
                 return;
             }
             cb(error, filas);
