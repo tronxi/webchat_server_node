@@ -146,7 +146,8 @@ app.post('//login', (req, res) => {
         }
         else
         {
-            mensajes = JSON.stringify(resultado);
+            mensajes = resultado;
+            //mensajes = JSON.stringify(resultado);
             for(let i = 0; i < mensajes.length; i++) {
                 console.log('mensaje completo ' + mensajes[i]);
                 console.log('antes de nada ' + mensajes[i].texto2);
@@ -157,7 +158,7 @@ app.post('//login', (req, res) => {
                 mensajes[i].texto2 = nuevoMensaje;
             }
             console.log(mensajes);
-            res.send(mensajes);
+            res.send(JSON.stringify(resultado));
         }
     }, usuario, id);
   })
