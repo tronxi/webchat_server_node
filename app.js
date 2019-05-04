@@ -144,8 +144,14 @@ app.post('//login', (req, res) => {
         }
         else
         {
-            console.log(resultado);
-            res.send(JSON.stringify(resultado));
+            mensajes = JSON.stringify(resultado);
+            for(let i = 0; i < mensajes.length; i++) {
+                nuevoMensaje = iconv.encode(mensajes[i].texto2, 'latin1');
+                nuevoMensaje = iconv.decode(nuevoMensaje, 'utf8');
+                mensajes[i].texto2 = nuevoMensaje;
+            }
+            console.log(mensajes);
+            res.send(mensajes);
         }
     }, usuario, id);
   })
