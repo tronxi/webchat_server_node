@@ -144,6 +144,7 @@ app.post('//login', (req, res) => {
         }
         else
         {
+            console.log(resultado);
             res.send(JSON.stringify(resultado));
         }
     }, usuario, id);
