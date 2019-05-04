@@ -148,8 +148,10 @@ app.post('//login', (req, res) => {
         {
             mensajes = JSON.stringify(resultado);
             for(let i = 0; i < mensajes.length; i++) {
-                nuevoMensaje = iconv.encode(mensajes[i].texto2, 'latin1');
-                nuevoMensaje = iconv.decode(nuevoMensaje, 'utf8');
+                nuevoMensaje = iconv.encode(mensajes[i].texto2, 'ISO-8859-1');
+                console.log('Despues de encode latin ' + nuevoMensaje)
+                nuevoMensaje = iconv.decode(nuevoMensaje, 'utf-8');
+                console.log('Despues de decode utf-8 ' + nuevoMensaje)
                 mensajes[i].texto2 = nuevoMensaje;
             }
             console.log(mensajes);
