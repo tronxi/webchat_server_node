@@ -146,18 +146,11 @@ app.post('//login', (req, res) => {
         }
         else
         {
-            mensajes = resultado;
-            //mensajes = JSON.stringify(resultado);
-            for(let i = 0; i < mensajes.length; i++) {
-                console.log('mensaje completo ' + mensajes[i]);
-                console.log('antes de nada ' + mensajes[i].texto2);
-                nuevoMensaje = iconv.encode(mensajes[i].texto2, 'ISO-8859-1');
-                console.log('Despues de encode latin ' + nuevoMensaje)
+            for(let i = 0; i < resultado.length; i++) {
+                nuevoMensaje = iconv.encode(resultado[i].texto2, 'ISO-8859-1');
                 nuevoMensaje = iconv.decode(nuevoMensaje, 'utf-8');
-                console.log('Despues de decode utf-8 ' + nuevoMensaje)
-                mensajes[i].texto2 = nuevoMensaje;
+                resultado[i].texto2 = nuevoMensaje;
             }
-            console.log(mensajes);
             res.send(JSON.stringify(resultado));
         }
     }, usuario, id);
